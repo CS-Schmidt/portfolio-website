@@ -1,0 +1,7 @@
+# The extends property lists the configurations which this configuration will
+# inherit from. Each successive config specified in the list will take
+# precedence of the one that came before.
+extends:
+  - 'stylelint-config-standard'
+  - 'stylelint-config-prettier'
+  - 'stylelint-config-recess-order'

@@ -2,7 +2,9 @@
   "description": "The codebase for my personal portfolio website.",
   "scripts": {
     "format": "prettier --ignore-unknown --write .",
-    "lint": "eslint . --fix --ext .cjs,.js,.mjs,.jsx",
+    "lint": "npm run lint:js && npm run lint:styles",
+    "lint:js": "eslint . --fix --ext .cjs,.js,.mjs,.jsx",
+    "lint:styles": "stylelint --fix '**/*.css'",
     "prepare": "husky install"
   },
   "repository": {
@@ -27,6 +29,10 @@
     "eslint-plugin-react": "^7.30.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.0",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "stylelint": "^14.8.5",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard": "^25.0.0"
   }
 }
