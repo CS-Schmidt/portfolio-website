@@ -1,7 +1,7 @@
 {
   "description": "The codebase for my personal portfolio website.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/CS-Schmidt/portfolio-website/issues"
   },
-  "homepage": "https://github.com/CS-Schmidt/portfolio-website#readme"
+  "homepage": "https://github.com/CS-Schmidt/portfolio-website#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "husky": "^8.0.1"
+  }
 }
