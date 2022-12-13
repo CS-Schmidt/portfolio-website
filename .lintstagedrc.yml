@@ -1,0 +1,3 @@
+# Matches both hidden and non-hidden files.
+'?(.)*.([cm]js|js?(x))': 'eslint --fix'
+'?*': 'prettier --ignore-unknown --write'

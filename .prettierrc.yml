@@ -1,0 +1,22 @@
+# General Options
+endOfLine: lf
+printWidth: 80
+proseWrap: always
+tabWidth: 2
+useTabs: false
+
+# JavaScript Options
+arrowParens: always
+bracketSpacing: true
+quoteProps: as-needed
+semi: true
+singleQuote: true
+trailingComma: none
+
+# HTML, JSX, and Other Options
+bracketSameLine: false
+embeddedLanguageFormatting: auto
+htmlWhitespaceSensitivity: css
+jsxSingleQuote: false
+singleAttributePerLine: false
+vueIndentScriptAndStyle: false
