@@ -23,12 +23,20 @@
     "url": "https://github.com/CS-Schmidt/portfolio-website/issues"
   },
   "homepage": "https://github.com/CS-Schmidt/portfolio-website#readme",
+  "dependencies": {
+    "core-js": "^3.22.8"
+  },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.18.2",
     "@babel/eslint-parser": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
+    "babel-loader": "^8.2.5",
+    "browserslist": "^4.20.3",
     "cross-env": "^7.0.3",
     "eslint": "^8.16.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -37,6 +45,7 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.0",
     "prettier": "^2.6.2",
+    "react-refresh": "^0.14.0",
     "stylelint": "^14.8.5",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recess-order": "^3.0.0",

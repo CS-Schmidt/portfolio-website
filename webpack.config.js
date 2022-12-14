@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
-// Config Variables
 const thisFileDirPath = dirname(fileURLToPath(import.meta.url));
 const isProduction = process.env.NODE_ENV === 'prod';
 const maxInlineSize = 8192; // Maximum inlining assets size in KB
@@ -75,7 +75,19 @@ export default {
   // a project will be treated.
   module: {
     rules: [
-      // TODO: add js file loaders
+      // NOTE: babel-loader could be a source of bloated code bundles or slow builds
+      {
+        test: /\.([cm]js|js?x)$/i,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              configFile: join(thisFileDirPath, 'babel.config.cjs')
+            }
+          }
+        ]
+      },
       // TODO: add css file loaders
       {
         test: /\.(bmp|webp|gif|jpeg|png|svg|avif)$/i,
@@ -102,6 +114,7 @@ export default {
         }
       }
     ]
-  }
+  },
   // TODO: add collection of plugins
+  plugins: isProduction ? [] : [new ReactRefreshWebpackPlugin()]
 };
