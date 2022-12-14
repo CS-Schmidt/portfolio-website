@@ -1,12 +1,15 @@
 {
   "description": "The codebase for my personal portfolio website.",
   "scripts": {
+    "dev": "cross-env NODE_ENV=dev webpack serve",
+    "prod": "cross-env NODE_ENV=prod webpack build",
     "format": "prettier --ignore-unknown --write .",
     "lint": "npm run lint:js && npm run lint:styles",
     "lint:js": "eslint . --fix --ext .cjs,.js,.mjs,.jsx",
     "lint:styles": "stylelint --fix '**/*.css'",
     "prepare": "husky install"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CS-Schmidt/portfolio-website.git"
@@ -21,8 +24,12 @@
   },
   "homepage": "https://github.com/CS-Schmidt/portfolio-website#readme",
   "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.2",
+    "@babel/eslint-parser": "^7.18.2",
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
+    "cross-env": "^7.0.3",
     "eslint": "^8.16.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -33,6 +40,9 @@
     "stylelint": "^14.8.5",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recess-order": "^3.0.0",
-    "stylelint-config-standard": "^25.0.0"
+    "stylelint-config-standard": "^25.0.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.1"
   }
 }

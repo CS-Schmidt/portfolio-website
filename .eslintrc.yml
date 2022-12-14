@@ -17,6 +17,9 @@ extends:
   - 'airbnb'
   - 'prettier'
 
+# Sets the parser that eslint will use.
+parser: '@babel/eslint-parser'
+
 # Configuration options for the parser eslint uses to build an in-memory
 # representation of each JavaScript file we want to lint.
 parserOptions:
