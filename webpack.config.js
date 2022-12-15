@@ -1,5 +1,7 @@
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
@@ -122,13 +124,24 @@ export default {
   plugins: isProduction
     ? // Production mode plugin configuration.
       [
+        new HtmlWebpackPlugin({
+          filename: '[name].[contenthash].bundle.html'
+        }),
         new MiniCSSExtractPlugin({
           filename: '[name].[contenthash].bundle.css',
           chunkFileName: '[name].[contenthash].bundle.css'
+        }),
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          reportFilename: join(thisFileDirPath, 'log/build-report.html'),
+          openAnalyzer: false
         })
       ]
     : // Development mode plugin configuration
       [
+        new HtmlWebpackPlugin({
+          filename: '[name].bundle.html'
+        }),
         new MiniCSSExtractPlugin({
           filename: '[name].bundle.css',
           chunkFileName: '[name].bundle.css'
