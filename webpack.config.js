@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 const thisFileDirPath = dirname(fileURLToPath(import.meta.url));
@@ -88,7 +89,10 @@ export default {
           }
         ]
       },
-      // TODO: add css file loaders
+      {
+        test: /.css$/i,
+        use: [MiniCSSExtractPlugin.loader, 'css-loader', 'postcss-loader']
+      },
       {
         test: /\.(bmp|webp|gif|jpeg|png|svg|avif)$/i,
         type: 'asset',
@@ -115,6 +119,20 @@ export default {
       }
     ]
   },
-  // TODO: add collection of plugins
-  plugins: isProduction ? [] : [new ReactRefreshWebpackPlugin()]
+  plugins: isProduction
+    ? // Production mode plugin configuration.
+      [
+        new MiniCSSExtractPlugin({
+          filename: '[name].[contenthash].bundle.css',
+          chunkFileName: '[name].[contenthash].bundle.css'
+        })
+      ]
+    : // Development mode plugin configuration
+      [
+        new MiniCSSExtractPlugin({
+          filename: '[name].bundle.css',
+          chunkFileName: '[name].bundle.css'
+        }),
+        new ReactRefreshWebpackPlugin()
+      ]
 };
