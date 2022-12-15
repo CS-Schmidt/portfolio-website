@@ -6,10 +6,10 @@ import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 const thisFileDirPath = dirname(fileURLToPath(import.meta.url));
-const isProduction = process.env.NODE_ENV === 'prod';
+const isProduction = process.env.NODE_ENV === 'production';
 const maxInlineSize = 8192; // Maximum inlining assets size in KB
 
-// Config Object
+// Webpack Config Object
 export default {
   // The mode parameter enables webpack's built-in optimizations for each
   // possible environment.
@@ -58,11 +58,11 @@ export default {
   },
   // Sets configuration for webpack-dev-server tool.
   devServer: {
-    port: 3000,
+    port: 8080,
     // Enables gzip compression for everything served.
     compress: true,
     // Opens default browser after the server has been started.
-    open: true,
+    open: ['index.bundle.html'],
     // Enables webpack's Hot Module Replacement (HMR) feature. HMR is exchanges,
     // adds, or removes modules while an application is running, without a full
     // reload.
@@ -125,11 +125,12 @@ export default {
     ? // Production mode plugin configuration.
       [
         new HtmlWebpackPlugin({
-          filename: '[name].[contenthash].bundle.html'
+          filename: '[name].[contenthash].bundle.html',
+          template: join(thisFileDirPath, 'src/index.html')
         }),
         new MiniCSSExtractPlugin({
           filename: '[name].[contenthash].bundle.css',
-          chunkFileName: '[name].[contenthash].bundle.css'
+          chunkFilename: '[name].[contenthash].bundle.css'
         }),
         new BundleAnalyzerPlugin({
           analyzerMode: 'static',
@@ -140,11 +141,12 @@ export default {
     : // Development mode plugin configuration
       [
         new HtmlWebpackPlugin({
-          filename: '[name].bundle.html'
+          filename: '[name].bundle.html',
+          template: join(thisFileDirPath, 'src/index.html')
         }),
         new MiniCSSExtractPlugin({
           filename: '[name].bundle.css',
-          chunkFileName: '[name].bundle.css'
+          chunkFilename: '[name].bundle.css'
         }),
         new ReactRefreshWebpackPlugin()
       ]

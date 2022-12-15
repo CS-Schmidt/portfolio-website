@@ -1,4 +1,6 @@
 !**/.*                # "unignores" hidden files & folders
 .git/                 # "re-ignores" the .git folder
 **/node_modules/?*    # "re-ignores" all hidden and non-hidden files in node_modules
+dist/
+log/
 
