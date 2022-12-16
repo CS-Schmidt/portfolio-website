@@ -40,6 +40,14 @@ settings:
 
 # Additional Eslint rules.
 rules:
-  import/no-extraneous-dependencies:
+  no-plusplus:
     - 'error'
+    - allowForLoopAfterthoughts: true
+  import/no-extraneous-dependencies:
+    - 'warn'
     - devDependencies: true
+  react/jsx-no-bind:
+    - 'warn'
+    - allowFunctions: true
+  react/jsx-props-no-spreading:
+    - 'off'

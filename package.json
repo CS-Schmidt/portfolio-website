@@ -24,9 +24,13 @@
   },
   "homepage": "https://github.com/CS-Schmidt/portfolio-website#readme",
   "dependencies": {
+    "@react-three/fiber": "^7.0.27",
+    "@react-three/postprocessing": "^2.3.2",
     "core-js": "^3.22.8",
+    "postprocessing": "^6.27.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "three": "^0.139.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",

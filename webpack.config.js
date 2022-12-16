@@ -96,6 +96,10 @@ export default {
         use: [MiniCSSExtractPlugin.loader, 'css-loader', 'postcss-loader']
       },
       {
+        test: /.glsl$/i,
+        type: 'asset/source'
+      },
+      {
         test: /\.(bmp|webp|gif|jpeg|png|svg|avif)$/i,
         type: 'asset',
         generator: {
