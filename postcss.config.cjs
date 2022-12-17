@@ -1,9 +1,9 @@
-import postcssNormalize from 'postcss-normalize';
-import postcssPresetEnv from 'postcss-preset-env';
-import cssnanoPlugin from 'cssnano';
+const postcssNormalize = require('postcss-normalize');
+const postcssPresetEnv = require('postcss-preset-env');
+const cssnanoPlugin = require('cssnano');
 
 // PostCSS Configuration Object
-export default {
+module.exports = {
   // Plugins for PostCSS. Each plugin adds functionality to PostCSS as a CSS
   // transformation tool.
   plugins: [

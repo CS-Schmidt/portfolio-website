@@ -28,11 +28,13 @@ export default function Background() {
         position: 'fixed',
         top: 0,
         left: 0,
-        zindex: -1
+        zIndex: -1
       }}
     >
       <Canvas gl={initRenderer}>
         <Scene />
+        {/* <CameraControls /> */}
+        <ParticleSphere />
         <EffectComposer>
           <Bloom
             intensity={0.25}
@@ -52,12 +54,7 @@ export default function Background() {
 function Scene() {
   const { scene } = useThree();
   scene.background = new THREE.Color(0x14110f);
-  return (
-    <>
-      {/* <CameraControls /> */}
-      <ParticleSphere />
-    </>
-  );
+  return <></>;
 }
 
 // function CameraControls() {
@@ -95,7 +92,7 @@ function ParticleSphere() {
   };
   useFrame(() => {
     sphere.current.rotation.y += 0.0003;
-    material.current.uniforms.time.value += 0.01;
+    material.current.uniforms.time.value += 0.005;
   });
   useEffect(() => {
     const number = geometry.current.attributes.position.array.length;
@@ -109,7 +106,7 @@ function ParticleSphere() {
     );
   }, []);
   return (
-    <mesh ref={sphere} position={[0, 0, 3.4]}>
+    <mesh ref={sphere} position={[0, -0.05, 3.2]}>
       <points>
         <dodecahedronBufferGeometry ref={geometry} args={[1, 50]} />
         <shaderMaterial ref={material} {...shaderMaterialConfig} />
