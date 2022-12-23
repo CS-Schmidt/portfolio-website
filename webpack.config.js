@@ -48,7 +48,7 @@ export default {
       ? '[name].[contenthash].bundle.js'
       : '[name].bundle.js',
     // Sets the name of asset modules.
-    assetModuleFilename: 'assets/[name].[hash][ext]',
+    // assetModuleFilename: 'assets/[name].[hash][ext]',
     // Controls "cleaning" of the output directory before each build.
     clean: true
   },
@@ -101,7 +101,7 @@ export default {
       },
       {
         test: /\.(bmp|webp|gif|jpeg|png|svg|avif)$/i,
-        type: 'asset',
+        type: 'asset/resource',
         generator: {
           filename: 'images/[name].[hash][ext]'
         },

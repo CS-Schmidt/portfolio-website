@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/CS-Schmidt/portfolio-website#readme",
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/runtime": "^7.20.6",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
@@ -31,10 +33,14 @@
     "@react-three/fiber": "^7.0.27",
     "@react-three/postprocessing": "^2.3.2",
     "core-js": "^3.22.8",
+    "locomotive-scroll": "^4.1.4",
     "postprocessing": "^6.27.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "three": "^0.139.0"
+    "react-locomotive-scroll": "^0.2.0",
+    "react-spinners": "^0.13.7",
+    "three": "^0.139.0",
+    "typeit": "^8.7.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",

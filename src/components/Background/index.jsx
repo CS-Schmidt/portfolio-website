@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Canvas, useThree, useFrame } from '@react-three/fiber'; // NOTE: import extend to use controls
+import { Canvas, useThree, useFrame, extend } from '@react-three/fiber';
 import * as THREE from 'three';
 import {
   EffectComposer,
@@ -9,31 +9,32 @@ import {
 import { BlendFunction } from 'postprocessing';
 import vertexShader from './shaders/vertex-shader.glsl';
 import fragmentShader from './shaders/fragment-shader.glsl';
+import './styles';
 
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-// extend({ OrbitControls });
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
+extend({ OrbitControls });
+
+// Color 1: f3ff2b
+// Color 2: 49d91a
 
 export default function Background() {
   function initRenderer(canvas) {
-    const renderer = new THREE.WebGLRenderer({ canvas });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.physicallyCorrectLights = true;
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: false,
+      alpha: true
+    });
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.NoToneMapping;
+    // renderer.setClearColor(0xff0000, 0.5); // NOTE: check this
   }
   return (
-    <div
-      style={{
-        width: '100vw',
-        height: '100vh',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        zIndex: -1
-      }}
-    >
+    <div className="background">
       <Canvas gl={initRenderer}>
         <Scene />
-        {/* <CameraControls /> */}
+        <CameraControls />
         <ParticleSphere />
         <EffectComposer>
           <Bloom
@@ -42,7 +43,7 @@ export default function Background() {
             luminanceSmoothing={0.5}
           />
           <ChromaticAberration
-            blendFunction={BlendFunction.SOFT_LIGHT}
+            blendFunction={BlendFunction.LIGHTEN}
             offset={[0.0005, 0.0005]}
           />
         </EffectComposer>
@@ -53,19 +54,19 @@ export default function Background() {
 
 function Scene() {
   const { scene } = useThree();
-  scene.background = new THREE.Color(0x14110f);
+  scene.background = new THREE.Color(0x0a0a0a);
   return <></>;
 }
 
-// function CameraControls() {
-//   const {
-//     scene,
-//     camera,
-//     gl: { domElement }
-//   } = useThree();
-//   const controls = useRef();
-//   return <orbitControls ref={controls} args={[camera, domElement]} />;
-// }
+function CameraControls() {
+  const {
+    scene,
+    camera,
+    gl: { domElement }
+  } = useThree();
+  const controls = useRef();
+  return <orbitControls ref={controls} args={[camera, domElement]} />;
+}
 
 function ParticleSphere() {
   const sphere = useRef();
@@ -78,9 +79,9 @@ function ParticleSphere() {
     side: THREE.DoubleSide,
     uniforms: {
       time: { value: 0 },
-      uColor1: { value: new THREE.Color(0xff8400) },
-      uColor2: { value: new THREE.Color(0xfc575d) },
-      uColor3: { value: new THREE.Color(0x960200) },
+      uColor1: { value: new THREE.Color(0xeee82c) },
+      uColor2: { value: new THREE.Color(0x19381f) },
+      uColor3: { value: new THREE.Color(0x91cb3e) },
       resolution: { value: new THREE.Vector4() }
     },
     transparent: true,
@@ -106,9 +107,9 @@ function ParticleSphere() {
     );
   }, []);
   return (
-    <mesh ref={sphere} position={[0, -0.05, 3.2]}>
+    <mesh ref={sphere} position={[0, -0.05, 3.5]}>
       <points>
-        <dodecahedronBufferGeometry ref={geometry} args={[1, 50]} />
+        <dodecahedronBufferGeometry ref={geometry} args={[0.75, 50]} />
         <shaderMaterial ref={material} {...shaderMaterialConfig} />
       </points>
     </mesh>

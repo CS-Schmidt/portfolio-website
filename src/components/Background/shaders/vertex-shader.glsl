@@ -121,9 +121,9 @@ void main() {
   vUv = uv;
   vColorRandom = colorRandoms;
   vec3 newpos = position;
-  float frequency = 4.0;
-  float amplitude = 1.5;
-  float maxDistance = 2.5;
+  float frequency = 3.0;
+  float amplitude = 2.0;
+  float maxDistance = 3.5;
   vec3 target = position + curl(newpos.x * frequency, newpos.y * frequency, newpos.z * frequency) * amplitude;
   float d = length(newpos - target) / maxDistance;
   newpos = mix(position, target, pow(d, 5.));
