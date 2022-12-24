@@ -13,6 +13,6 @@ void main(){
   if(vColorRandom > 0.66) {
     finalColor = uColor3;
   }
-  // gl_FragColor=vec4(finalColor, alpha);
-	gl_FragColor=vec4(0.7333, 0.2902, 0.1137, alpha);
+  gl_FragColor=vec4(finalColor, alpha);
+	// gl_FragColor=vec4(0.7333, 0.2902, 0.1137, alpha);
 }

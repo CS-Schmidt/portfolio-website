@@ -11,8 +11,9 @@ import vertexShader from './shaders/vertex-shader.glsl';
 import fragmentShader from './shaders/fragment-shader.glsl';
 import './styles';
 
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// TODO: make background mobile responsive
 
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 extend({ OrbitControls });
 
 // Color 1: f3ff2b

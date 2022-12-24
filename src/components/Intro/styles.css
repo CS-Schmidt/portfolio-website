@@ -1,24 +1,33 @@
-main .portfolio-section:first-of-type {
+/* ==========================================================================
+   Intro Section
+   ========================================================================== */
+
+/* Mobile-first styles */
+
+#intro {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  outline: 1px solid blue; /* NOTE: remove later*/
 }
 
-main .portfolio-section:first-of-type > h2 {
+.intro__message {
   position: relative;
-  width: 500px;
-  padding: 1rem 0.5rem;
-  border-radius: 1rem;
+  top: var(--main-nav-height);
+  width: calc(2 * ((100vw - 2 * 16 - (4 - 1) * 16) / 4) + 3 * 16);
+  border-radius: 16px;
   background-color: rgb(255 255 255 / 2.5%);
-  backdrop-filter: blur(1px);
-  font-size: 2rem;
+  backdrop-filter: blur(2px);
   text-align: center;
-  font-family: 'Montserrat';
+  line-height: 1.5;
+  font-family: Montserrat;
+  font-size: 24px;
   font-weight: normal;
+  padding: 16px;
 }
 
-main .portfolio-section:first-of-type > h2 > span {
+.intro__message > span {
   font-weight: 600;
-  /* text-shadow: 2px 2px 2px black; */
-  color: orange;
+  color: #ff8000;
 }

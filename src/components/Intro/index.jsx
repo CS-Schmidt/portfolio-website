@@ -4,14 +4,17 @@ import './styles';
 
 export default function Intro() {
   useEffect(() => {
-    const typingEffect = new TypeIt('#intro-message', {
-      strings: ["Hi there. I'm Ethan.", "I'm a Web Developer."]
-    });
-    typingEffect.go();
+    new TypeIt('.intro__message', {
+      strings: [
+        "Hi there. I'm <span>Ethan</span>.",
+        "I'm a <span>Web Developer</span>."
+      ],
+      html: true
+    }).go();
   }, []);
   return (
-    <section className="portfolio-section">
-      <h2 id="intro-message" />
+    <section id="intro">
+      <h1 className="intro__message" />
     </section>
   );
 }

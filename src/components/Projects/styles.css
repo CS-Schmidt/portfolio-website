@@ -1,0 +1,69 @@
+/*  =========================================================================
+    Project Section
+    ========================================================================= */
+
+/* Mobile-first styles. */
+
+#projects {
+  margin-top: 6rem;
+  padding: 0 16px;
+}
+
+#projects header {
+  margin-bottom: 2rem;
+}
+
+#projects h2 {
+  font-weight: 700;
+}
+
+.projects__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 2rem;
+}
+
+.projects__list article {
+  border-radius: 16px;
+  background-color: #111111;
+  background-image: url('https://www.transparenttextures.com/patterns/buried.png');
+  background-size: contain;
+  padding: 16px;
+}
+
+.projects__list article h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.projects__list article header > p {
+  font-size: 16px;
+}
+
+.projects__list header {
+  margin-bottom: 1rem;
+}
+
+.projects__list article div {
+  margin-bottom: 2rem;
+}
+
+.projects__list article div > p {
+  margin-bottom: 16px;
+}
+
+.projects__list article h4 {
+  margin-bottom: 1rem;
+}
+
+.projects__list ul {
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+}
+
+.projects__list ul svg {
+  font-size: 2rem;
+}

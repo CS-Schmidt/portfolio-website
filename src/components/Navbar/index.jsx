@@ -1,60 +1,64 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCode,
-  faDownload,
-  faBars,
-  faXmark
-} from '@fortawesome/free-solid-svg-icons';
+import { faCode, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import debounce from '../../utils/debounce';
+import navLogo from '../../assets/nav-logo.svg';
 import './styles.css';
 
 export default function Navbar() {
-  const mobileMenuToggle = useRef();
-  const mobileMenuLinks = useRef();
-  const [mobileView, setMobileView] = useState(
-    window.innerWidth <= 600 ? true : false
-  );
-  const [mobileMenuToggled, setMobileMenuToggled] = useState(false);
-  useEffect(function addResizeListener() {
+  const menuToggle = useRef();
+  const menuLinks = useRef();
+  const [mobileView, setMobileView] = useState(window.innerWidth <= 600);
+  const [menuToggled, setMenuToggled] = useState(false);
+  useEffect(() => {
     window.addEventListener(
       'resize',
-      debounce(function checkMobileView() {
+      debounce(() => {
         if (window.innerWidth <= 600) setMobileView(true);
         else setMobileView(false);
       }, 20)
     );
   }, []);
+  useEffect(() => {
+    if (menuToggled) setMenuToggled(false);
+  }, [mobileView]);
 
   return (
     <nav id="main-nav">
-      <h1>
-        <a className="main-nav__logo">
-          <FontAwesomeIcon icon={faCode} color="#f3ff2b" />
-          Ethan Schmidt
-        </a>
-      </h1>
-      {/* Mobile nav menu toggle */}
+      {/* TODO: add locomotive scroll integration */}
+      <img className="main-nav__logo" src={navLogo} />
+      {/* Mobile nav menu toggle. */}
+      {/* TODO: find a way to prevent programmatic clicks on non-mobile view */}
       <button
-        ref={mobileMenuToggle}
-        onClick={() => setMobileMenuToggled(!mobileMenuToggled)}
-        className={mobileView ? 'show' : null}
+        ref={menuToggle}
+        className={`main-nav__menu-toggle ${mobileView ? 'show' : ''}`}
+        onClick={function toggleMenu() {
+          if (mobileView) {
+            setMenuToggled(!menuToggled);
+          }
+        }}
         type="button"
       >
-        {!mobileMenuToggled ? (
-          <FontAwesomeIcon className="main-nav__mobile-bars" icon={faBars} />
+        {!menuToggled ? (
+          <FontAwesomeIcon
+            className="main-nav__menu-toggle-icon"
+            icon={faBars}
+          />
         ) : (
-          <FontAwesomeIcon className="main-nav__mobile-bars" icon={faXmark} />
+          <FontAwesomeIcon
+            className="main-nav__menu-toggle-icon"
+            icon={faXmark}
+          />
         )}
       </button>
+      {/* Menu */}
       <div
-        ref={mobileMenuLinks}
-        className={`main-nav__links-wrapper ${
-          mobileMenuToggled ? 'show' : null
-        }`}
+        ref={menuLinks}
+        className={`main-nav__links-wrapper ${menuToggled ? 'show' : ''}`}
       >
         {/* Internal links. */}
+        {/* TODO: add locomotive scroll integration */}
         <ul className="main-nav__page-links">
           <li>
             <a>About</a>
@@ -70,27 +74,25 @@ export default function Navbar() {
         <ul className="main-nav__ext-links">
           <li>
             <a
-              target="_blank"
-              rel="author noopener"
               href="https:github.com/CS-Schmidt"
+              rel="author noopener noreferrer"
+              target="_blank"
             >
               <FontAwesomeIcon
-                className="github-square"
+                className="main-nav__icon-link"
                 icon={faGithubSquare}
-                color="#ff8b00"
               />
             </a>
           </li>
           <li>
             <a
-              target="_blank"
-              rel="noopener"
               href="https://www.linkedin.com/in/cs-schmidt"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <FontAwesomeIcon
-                className="github-square"
+                className="main-nav__icon-link"
                 icon={faLinkedin}
-                color="#ff8b00"
               />
             </a>
           </li>

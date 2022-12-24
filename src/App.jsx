@@ -11,7 +11,7 @@ import 'locomotive-scroll/dist/locomotive-scroll.css';
 import './app-styles';
 
 export default function App() {
-  const scrollContainerRef = useRef(null);
+  const scrollContainerRef = useRef();
   return (
     <>
       {/* Re-enable loading screen later */}
@@ -22,13 +22,19 @@ export default function App() {
         watch={[]}
       >
         <Navbar />
-        <main data-scroll-container ref={scrollContainerRef}>
-          <Intro />
-          <About />
-          <Projects />
-          <Contact />
-        </main>
-        {/* <Background /> */}
+        <div ref={scrollContainerRef} data-scroll-container>
+          <header>
+            <Intro />
+          </header>
+          <main>
+            <About />
+            <Projects />
+          </main>
+          <footer>
+            <Contact />
+          </footer>
+        </div>
+        <Background />
       </LocomotiveScrollProvider>
     </>
   );

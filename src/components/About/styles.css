@@ -1,0 +1,91 @@
+/* ==========================================================================
+   About Me Section
+   ========================================================================== */
+
+/* Mobile-first styles */
+
+#about-me {
+  min-height: calc(100vh - var(--main-nav-height));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4rem;
+}
+
+#about-me > div:first-of-type {
+  width: calc(100vw - 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4rem;
+  background-color: #111111;
+  background-image: url('https://www.transparenttextures.com/patterns/buried.png');
+  background-size: contain;
+  margin: 0 16px;
+  padding: 20px 0;
+}
+
+.about-me__description {
+  max-width: calc(100vw - 4rem);
+  border-radius: 16px;
+  background-color: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(3px);
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  padding: 16px 16px;
+}
+
+.about-me__description h2 {
+  width: max-content;
+  border-radius: 8px;
+  background-color: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(3px);
+  padding: 8px;
+  font-family: 'Barlow';
+}
+
+.about-me__description h2 > span {
+  color: #ff8000;
+}
+
+.about-me__description > p {
+  font-family: 'Montserrat';
+}
+
+.about-me__photo {
+  max-width: calc(100% - 2rem);
+}
+
+.about-me__skills {
+  border-radius: 16px;
+  background-color: #111111;
+  background-image: url('https://www.transparenttextures.com/patterns/buried.png');
+  background-size: contain;
+  margin: 0 16px;
+  padding: 16px;
+}
+
+.about-me__skills h2 {
+  width: max-content;
+  border-radius: 8px;
+  background-color: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(3px);
+  padding: 8px;
+  /* box-shadow: 2px 2px 2px black; */
+  font-family: 'Barlow';
+  margin-bottom: 2rem;
+}
+
+.about-me__skill-icons {
+  max-width: calc(100vw - 4rem);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.about-me__skill-icons svg {
+  width: 3rem;
+}

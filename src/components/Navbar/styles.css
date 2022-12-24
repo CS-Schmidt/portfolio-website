@@ -1,91 +1,89 @@
-/*
-* MOBILE RESPONSIVE: width <= 600px
-*/
+/* ==========================================================================
+   Navbar Styles
+   ========================================================================== */
+
+/* Mobile-first styles */
+
 #main-nav {
-  position: sticky;
+  position: absolute;
   top: 0;
+  width: 100vw;
   z-index: 999;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
   height: var(--main-nav-height);
-  padding: 20px 20px;
+  padding: 20px;
+  background-color: #111111;
+  /* outline: 1px solid red; /\* NOTE: remove later *\/ */
 }
 
-#main-nav h1 a {
-  width: max-content;
-  display: flex;
-  align-items: center;
-  column-gap: 8px;
+.main-nav__logo {
+  cursor: pointer;
 }
 
-#main-nav h1 a svg {
-  color: #e96c11;
-}
-
-#main-nav button {
-  padding: 0;
-  border: 0;
-  background: none;
+.main-nav__menu-toggle {
   display: none;
+  padding: 0;
+  background: none;
+  border: 0;
 }
 
-#main-nav button.show {
+.main-nav__menu-toggle.show {
   display: inline;
 }
 
-#main-nav .main-nav__mobile-bars {
+.main-nav__menu-toggle-icon {
   font-size: 25px;
   color: white;
 }
-
-#main-nav .main-nav__links-wrapper {
+.main-nav__links-wrapper {
   position: absolute;
   top: 100%;
-  right: -100%;
-  width: 100%;
-  height: calc(100vh - var(--main-nav-height));
-  display: flex;
+  left: 0;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+  height: calc(100vh - var(--main-nav-height));
   background-color: rgb(255 255 255 / 5%);
   backdrop-filter: blur(3px);
-  /* transition: all 150ms ease-in; */
 }
 
-#main-nav .main-nav__links-wrapper.show {
-  right: 0;
+.main-nav__links-wrapper.show {
+  display: flex;
 }
 
-#main-nav .main-nav__page-links {
-  padding: 16px 0 20px;
+.main-nav__page-links {
   width: 100%;
+  padding: 16px 0 20px;
   background-color: #181717;
 }
 
-#main-nav .main-nav__page-links li {
+.main-nav__page-links > li {
   width: 100%;
 }
 
-#main-nav .main-nav__page-links li a {
-  width: 100%;
-  border-bottom: 1px solid #111111;
-  background-color: #1f1f1f;
-  padding: 20px 0;
+.main-nav__page-links > li a {
   display: flex;
   justify-content: center;
+  width: 100%;
+  padding: 20px 0;
   font-size: 20px;
   font-weight: 500;
-}
-
-#main-nav .main-nav__ext-links {
   background-color: #1f1f1f;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 20% 16px;
+  border-bottom: 1px solid #111;
 }
 
-#main-nav .main-nav__ext-links svg {
+.main-nav__ext-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20% 16px;
+  background-color: #1f1f1f;
+}
+
+.main-nav__icon-link {
   font-size: 4rem;
+  color: #ff8b00;
 }
